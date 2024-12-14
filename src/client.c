@@ -1,15 +1,37 @@
 #include "../include/minitalk.h"
 
+static void str_to_bin(const char *str, int pid)
+{
+	int		i;
+	char	octet;
+	char	*res;
+
+	res = (char *)str;
+	strlcat(res, "\n", strlen(res) + 2);
+    while (*str)
+	{
+		i = 7;
+        while (i >= 0)
+		{
+			octet = *str;
+			if (octet & (1 << i--))
+				kill(pid, SIGUSR1);
+			else
+				kill(pid, SIGUSR2);
+			usleep(2720);
+		}
+        str++;
+    }
+}
+
 int	main(int argc, char **argv)
 {
-	__pid_t	pid;
-
-	if ( argc == 3)
+	if (argc == 3)
+		str_to_bin(argv[2], atoi(argv[1]));
+	else
 	{
-		strncpy(msg, argv[2], LENGTH);
-		pid = atoi(argv[1]);
-		
+		printf("\n\nError (wrong format): Enter parameters correctly:\n\n");
+		printf("\t\t\t./client.c <PID> \"message\"\n\n\n");
 	}
-
 	return (0);
 }
