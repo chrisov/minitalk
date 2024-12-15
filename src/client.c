@@ -7,7 +7,7 @@ static void str_to_bin(const char *str, int pid)
 	char	*res;
 
 	res = (char *)str;
-	strlcat(res, "\n", strlen(res) + 2);
+	ft_strlcat(res, "\n", ft_strlen(res) + 2);
     while (*str)
 	{
 		i = 7;
@@ -27,7 +27,7 @@ static void str_to_bin(const char *str, int pid)
 int	main(int argc, char **argv)
 {
 	if (argc == 3)
-		str_to_bin(argv[2], atoi(argv[1]));
+		str_to_bin(argv[2], ft_atoi(argv[1]));
 	else
 	{
 		printf("\n\nError (wrong format): Enter parameters correctly:\n\n");
