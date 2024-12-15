@@ -1,6 +1,6 @@
 
-#ifndef SERVER_H
-# define SERVER_H
+#ifndef MINITALK_H
+# define MINITALK_H
 
 # include <stdio.h>
 # include <unistd.h>
@@ -8,9 +8,5 @@
 
 # include <string.h>
 #include <stdlib.h>
-
-# define LENGTH 100
-
-char	msg[LENGTH];
 
 #endif
