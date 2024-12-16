@@ -6,16 +6,16 @@
 /*   By: dchrysov <dchrysov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 15:26:39 by dchrysov          #+#    #+#             */
-/*   Updated: 2024/12/16 17:43:42 by dchrysov         ###   ########.fr       */
+/*   Updated: 2024/12/16 17:47:19 by dchrysov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minitalk.h"
 
-void	server(int sig)
+static void	server(int sig)
 {
-	static int			octet;
-	static int		bit_count;
+	static int	octet;
+	static int	bit_count;
 
 	if (sig == SIGUSR1)
 		octet = (octet << 1) | 1;

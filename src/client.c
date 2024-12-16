@@ -6,13 +6,13 @@
 /*   By: dchrysov <dchrysov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 15:26:11 by dchrysov          #+#    #+#             */
-/*   Updated: 2024/12/16 17:41:48 by dchrysov         ###   ########.fr       */
+/*   Updated: 2024/12/16 18:50:41 by dchrysov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minitalk.h"
 
-void	chr_to_bin(char ch, int pid)
+static void	chr_to_bin(char ch, int pid)
 {
 	int	i;
 	int	octet;
@@ -26,36 +26,31 @@ void	chr_to_bin(char ch, int pid)
 			kill(pid, SIGUSR1);
 		else
 			kill(pid, SIGUSR2);
-		usleep(200);
+		usleep(100);
 		i++;
+	}
+}
+
+static void	error_check( int argc, char *argv)
+{
+	while (*argv)
+	{
+		if (!ft_isdigit(*argv++) || argc != 3)
+		{
+			write(STDOUT_FILENO, "\033[1;31m", 7);
+			write(STDOUT_FILENO, "\n(Wrong arguments format) ", 26);
+			write(STDOUT_FILENO, "\033[0m", 4);
+			write(STDOUT_FILENO, "Enter parameters correctly:\n\n\t\t\t", 32);
+			write(STDOUT_FILENO, "./client.c <PID> \"message\"\n\n\n", 29);
+			exit(1);
+		}
 	}
 }
 
 int	main(int argc, char **argv)
 {
-	int	i;
-
-	i = 0;
-	if (argc == 3)
-	{
-		while (argv[1][i])
-		{
-			if (!ft_isdigit(argv[1][i++]))
-			{
-				write(STDOUT_FILENO, "Wrong PID format. Use a PID of the following format\n", 49);
-				exit(1);
-			}
-		}
-		while (*argv[2])
-		{
-			chr_to_bin(*argv[2], ft_atoi(argv[1]));
-			argv[2]++;
-		}
-	}
-	else
-	{
-		printf("\n\n\033[1;31mError\033[0m (wrong format): Enter parameters correctly:\n\n");
-		printf("\t\t\t./client.c <PID> \"message\"\n\n\n");
-	}
+	error_check(argc, argv[1]);
+	while (*argv[2])
+		chr_to_bin(*argv[2]++, ft_atoi(argv[1]));
 	return (0);
 }
