@@ -1,7 +1,7 @@
 #
 #
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -I$(INCDIR) -I$(LIBFTDIR)/include
+CFLAGS = -Wall -Werror -Wextra -g -I$(INCDIR) -I$(LIBFTDIR)/include
 
 LIBFTDIR = ./include/libft
 INCDIR = ./include

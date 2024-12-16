@@ -1,44 +1,33 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   server.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dchrysov <dchrysov@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/16 15:26:39 by dchrysov          #+#    #+#             */
+/*   Updated: 2024/12/16 17:43:42 by dchrysov         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/minitalk.h"
 
-volatile sig_atomic_t bit = -1;
-
-static void	signal_handler(int sig)
+void	server(int sig)
 {
+	static int			octet;
+	static int		bit_count;
+
 	if (sig == SIGUSR1)
-		bit = 1;
-	else
-		bit = 0;
-}
-
-// static void	signal_handler_s2(int sig)
-// {
-// 	(void)sig;
-// 	bit = 0;
-// }
-
-static void server(void)
-{
-	char	octet;
-	int		bit_count;
-	// char	str[LENGTH];
-
-	octet = 0;
-	bit_count = 0;
-	while (1)
+		octet = (octet << 1) | 1;
+	else if (sig == SIGUSR2)
+		octet = (octet << 1) | 0;
+	bit_count++;
+	if (bit_count == 8)
 	{
-		pause();
-		if (bit != -1)
-		{
-			octet = (octet << 1) | bit;
-			bit_count++;
-			if (bit_count == 8)
-			{
-				write(STDOUT_FILENO, &octet, 1);
-				octet = 0;
-				bit_count = 0;
-			}
-			bit = -1;
-		}
+		if (write(STDOUT_FILENO, &octet, 1) == -1)
+			exit (1);
+		octet = 0;
+		bit_count = 0;
 	}
 }
 
@@ -46,8 +35,9 @@ int	main(void)
 {
 	printf("\nServer is running. PID: %d\n", getpid());
 	printf("------------------------------------------------\n\n");
-	signal(SIGUSR1, signal_handler);
-	signal(SIGUSR2, signal_handler);
-	server();
+	signal(SIGUSR1, server);
+	signal(SIGUSR2, server);
+	while (1)
+		pause();
 	return (0);
 }
