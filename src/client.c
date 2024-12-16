@@ -4,10 +4,11 @@ static void str_to_bin(const char *str, int pid)
 {
 	int		i;
 	char	octet;
-	char	*res;
+	char	res[LENGTH];
 
-	res = (char *)str;
-	ft_strlcat(res, "\n", ft_strlen(res) + 2);
+	ft_strlcpy(res, str, ft_strlen(str) + 1);
+	ft_strlcat(res, "\n\0", ft_strlen(res) + 3);
+	printf("\"%s\"", res);
     while (*str)
 	{
 		i = 7;

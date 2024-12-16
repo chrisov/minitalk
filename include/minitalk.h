@@ -8,4 +8,5 @@
 
 # include "../include/libft/include/libft.h"
 
+# define LENGTH 1024
 #endif
