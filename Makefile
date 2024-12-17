@@ -26,11 +26,6 @@ $(SRVR): $(SRVROBJ) $(LIBFT) $(FT_PRINTF)
 $(CLNT): $(CLNTOBJ) $(LIBFT) $(FT_PRINTF)
 	$(CC) $(CFLAGS) -o $(CLNT) $(CLNTOBJ) -L$(LIBFTDIR) -lft -L$(FT_PRINTFDIR) -lftprintf
 
-$(OBJDIR)/%.o: ./src/%.c | $(OBJDIR)
-	@echo "\n\033[33mCompiling all build files and dependencies...\033[0m\n"
-	$(CC) $(CFLAGS) -c $< -o $@
-	@echo "\n\033[32mCompilation successful!\033[0m\n"
-
 $(OBJDIR):
 	mkdir -p $(OBJDIR)
 
@@ -39,6 +34,11 @@ $(LIBFT):
 
 $(FT_PRINTF):
 	$(MAKE) -C $(FT_PRINTFDIR)
+
+$(OBJDIR)/%.o: ./src/%.c | $(OBJDIR)
+	@echo "\n\033[33mCompiling all build files and dependencies...\033[0m\n"
+	$(CC) $(CFLAGS) -c $< -o $@
+	@echo "\n\033[32mCompilation successful!\033[0m\n"
 
 clean:
 	@echo "\n\033[33mCleaning up build and library files...\033[0m\n"

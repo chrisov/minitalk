@@ -18,7 +18,6 @@ NAME = libftprintf.a
 all: $(NAME)
 
 $(NAME): $(OBJDIR) $(OBJS)
-	clear
 	@echo "\n\033[33mCreating libftftprintf static library...\033[0m\n"
 	ar rcs $(NAME) $(OBJS)
 	@echo "\nlibftprintf.a created \033[32msuccessfully!\033[0m\n"

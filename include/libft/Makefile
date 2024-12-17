@@ -34,7 +34,6 @@ NAME = libft.a
 all: $(NAME)
 
 $(NAME): $(OBJDIR) $(OBJS)
-	clear
 	@echo "\n\033[33mCreating libft static library...\033[0m\n"
 	ar rcs $(NAME) $(OBJS)
 	@echo "\nlibft.a created \033[32msuccessfully!\033[0m\n"
