@@ -1,18 +1,7 @@
-
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: dchrysov <dchrysov@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/10/09 16:35:33 by dchrysov          #+#    #+#              #
-#    Updated: 2024/10/09 16:35:33 by dchrysov         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
-CC = gcc
-CFLAGS = -Wall -Werror -Wextra -IINCDIR
+#
+#
+CC = cc
+CFLAGS = -Wall -Werror -Wextra -I$(INCDIR)
 
 INCDIR = ./include
 SRCDIR = ./src
@@ -38,21 +27,22 @@ $(NAME): $(OBJDIR) $(OBJS)
 	ar rcs $(NAME) $(OBJS)
 	@echo "\nlibft.a created \033[32msuccessfully!\033[0m\n"
 
-$(OBJDIR)/%.o: $(SRCDIR)/%.c
+$(OBJDIR)/%.o: $(SRCDIR)/%.c | $(OBJDIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-%$(OBJDIR):
+$(OBJDIR):
 	mkdir -p $(OBJDIR)
 
 clean:
-	@echo "\n\033[33mCleaning up build files...\033[0m\n"
+	@echo "\n\033[33mCleaning up libft build files...\033[0m\n"
 	rm -f $(OBJS)
-	@echo "\nBuild files cleaned up \033[32msuccessfully!\033[0m\n"
+	@echo "\nlibft build files cleaned up \033[32msuccessfully!\033[0m\n"
 
 fclean: clean
-	@echo "\n\033[33mCleaning up executables...\033[0m\n"
+	@echo "\n\033[33mCleaning up libft executable...\033[0m\n"
 	rm -f $(NAME)
-	@echo "\nExecutables cleaned up \033[32msuccessfully!\033[0m\n"
+	rm -rf $(OBJDIR)
+	@echo "\nlibft executable cleaned up \033[32msuccessfully!\033[0m\n"
 
 re: fclean all
 

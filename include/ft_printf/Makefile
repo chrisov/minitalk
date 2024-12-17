@@ -36,6 +36,7 @@ clean:
 fclean: clean
 	@echo "\n\033[33mCleaning up libftprintf executable...\033[0m\n"
 	rm -f $(NAME)
+	rm -rf $(OBJDIR)
 	@echo "\nlibftprintf executable cleaned up \033[32msuccessfully!\033[0m\n"
 
 re: fclean all
