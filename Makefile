@@ -53,6 +53,7 @@ fclean: clean
 	rm -f $(SRVR) $(CLNT)
 	$(MAKE) -C $(LIBFTDIR) fclean
 	$(MAKE) -C $(FT_PRINTFDIR) fclean
+	rm -rf $(OBJDIR)
 	@echo "\nExecutables and static libraries cleaned up \033[32msuccessfully!\033[0m\n"
 
 re: fclean all
