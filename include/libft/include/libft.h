@@ -6,7 +6,7 @@
 /*   By: dchrysov <dchrysov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 13:14:32 by dchrysov          #+#    #+#             */
-/*   Updated: 2024/12/12 13:53:30 by dchrysov         ###   ########.fr       */
+/*   Updated: 2024/12/17 15:14:49 by dchrysov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ void			*ft_memcpy(void *dest, const void *src, size_t n);
 void			*ft_memmove(void *dst, const void *src, size_t len);
 void			ft_striteri(char *s, void (*f)(unsigned int, char *));
 void			*ft_calloc(size_t nmemb, size_t size);
-void			ft_putchar_fd(char c, int fd);
+void			ft_putchar(char c, int fd);
 void			ft_putendl_fd(char *s, int fd);
-void			ft_putnbr_fd(int n, int fd);
-void			ft_putstr_fd(char *s, int fd);
+void			ft_putnbr(int n, int fd);
+void			ft_putstr(char *s, int fd);
 char			**ft_split(const char *s, char c);
 char			*ft_strchr(const char *s, int c);
 char			*ft_strrchr(const char *s, int c);

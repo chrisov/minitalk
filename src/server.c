@@ -6,7 +6,7 @@
 /*   By: dchrysov <dchrysov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 15:26:39 by dchrysov          #+#    #+#             */
-/*   Updated: 2024/12/16 17:47:19 by dchrysov         ###   ########.fr       */
+/*   Updated: 2024/12/17 15:38:39 by dchrysov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ static void	server(int sig)
 
 int	main(void)
 {
-	printf("\nServer is running. PID: %d\n", getpid());
-	printf("------------------------------------------------\n\n");
+	ft_printf("\nServer is running. PID: %d", getpid());
+	ft_printf("\n------------------------------------------------\n\n");
 	signal(SIGUSR1, server);
 	signal(SIGUSR2, server);
 	while (1)

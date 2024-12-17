@@ -1,18 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_putunbr_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dchrysov <dchrysov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/15 11:41:10 by dchrysov          #+#    #+#             */
-/*   Updated: 2024/12/17 14:55:11 by dchrysov         ###   ########.fr       */
+/*   Created: 2024/10/19 15:01:58 by dchrysov          #+#    #+#             */
+/*   Updated: 2024/12/17 14:28:15 by dchrysov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "../include/ft_printf.h"
 
-void	ft_putchar(char c, int fd)
+int	ft_putunbr_fd(int n, int fd)
 {
-	write (fd, &c, 1);
+	int				count;
+	unsigned int	un;
+
+	count = 0;
+	un = (unsigned int)n;
+	if (un >= 10)
+	{
+		count += ft_putunbr_fd(un / 10, fd);
+		if (count == -1)
+			return (count);
+	}
+	count += ft_putchar_fd((un % 10) + '0', fd);
+	return (count);
 }
