@@ -34,25 +34,15 @@ $(OBJDIR)/%.o: ./src/%.c | $(OBJDIR)
 $(OBJDIR):
 	mkdir -p $(OBJDIR)
 
-$(LIBFT):
-	$(MAKE) -C $(LIBFTDIR)
-
-$(FT_PRINTF):
-	$(MAKE) -C $(FT_PRINTFDIR)
-
 clean:
 	@echo "\n\033[33mCleaning up build and library files...\033[0m\n"
 	rm -f $(CLNTOBJ) $(SRVROBJ)
-	$(MAKE) -C $(LIBFTDIR) clean
-	$(MAKE) -C $(FT_PRINTFDIR) clean
 	@echo "\nAll build files cleaned up \033[32msuccessfully!\033[0m\n"
 
 
 fclean: clean
 	@echo "\n\033[33mCleaning up executables and static libraries...\033[0m\n"
 	rm -f $(SRVR) $(CLNT)
-	$(MAKE) -C $(LIBFTDIR) fclean
-	$(MAKE) -C $(FT_PRINTFDIR) fclean
 	rm -rf $(OBJDIR)
 	@echo "\nExecutables and static libraries cleaned up \033[32msuccessfully!\033[0m\n"
 
