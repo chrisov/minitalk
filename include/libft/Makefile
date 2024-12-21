@@ -36,12 +36,12 @@ $(OBJDIR):
 clean:
 	@echo "\n\033[33mCleaning up libft build files...\033[0m\n"
 	rm -f $(OBJS)
+	rm -rf $(OBJDIR)
 	@echo "\nlibft build files cleaned up \033[32msuccessfully!\033[0m\n"
 
 fclean: clean
 	@echo "\n\033[33mCleaning up libft executable...\033[0m\n"
 	rm -f $(NAME)
-	rm -rf $(OBJDIR)
 	@echo "\nlibft executable cleaned up \033[32msuccessfully!\033[0m\n"
 
 re: fclean all

@@ -33,16 +33,24 @@ static void	chr_to_bin(char ch, int pid)
 
 static void	error_check( int argc, char *argv)
 {
-	while (*argv)
+	if (argc == 1)
 	{
-		if (!ft_isdigit(*argv++) || argc != 3)
+		ft_printf("\033[1;31m\n(Wrong arguments format) ");
+		ft_printf("\033[0mEnter parameters correctly:\n\n\t\t\t");
+		ft_printf("./client.c <PID> \"message\"\n\n\n");
+		exit(0);
+	}
+	else
+	{
+		while (*argv)
 		{
-			write(STDOUT_FILENO, "\033[1;31m", 7);
-			write(STDOUT_FILENO, "\n(Wrong arguments format) ", 26);
-			write(STDOUT_FILENO, "\033[0m", 4);
-			write(STDOUT_FILENO, "Enter parameters correctly:\n\n\t\t\t", 32);
-			write(STDOUT_FILENO, "./client.c <PID> \"message\"\n\n\n", 29);
-			exit(1);
+			if (!ft_isdigit(*argv++) || argc != 3)
+			{
+				ft_printf("\033[1;31m\n(Wrong arguments format) ");
+				ft_printf("\033[0mEnter parameters correctly:\n\n\t\t\t");
+				ft_printf("./client.c <PID> \"message\"\n\n\n");
+				exit(0);
+			}
 		}
 	}
 }
