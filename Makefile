@@ -34,6 +34,12 @@ $(OBJDIR)/%.o: ./src/%.c | $(OBJDIR)
 $(OBJDIR):
 	mkdir -p $(OBJDIR)
 
+$(FT_PRINTF):
+	$(MAKE) -C $(FT_PRINTFDIR)
+	
+$(LIBFT):
+	$(MAKE) -C $(LIBFTDIR)
+
 clean:
 	@echo "\n\033[33mCleaning up build and library files...\033[0m\n"
 	rm -f $(CLNTOBJ) $(SRVROBJ)
