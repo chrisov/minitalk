@@ -21,10 +21,14 @@ SRVR = server
 all: $(SRVR) $(CLNT)
 
 $(SRVR): $(SRVROBJ) $(LIBFT) $(FT_PRINTF)
+	@echo "\n\033[33mCompiling server files and dependencies...\033[0m\n"
 	$(CC) $(CFLAGS) -o $(SRVR) $(SRVROBJ) -L$(LIBFTDIR) -lft -L$(FT_PRINTFDIR) -lftprintf
+	@echo "\n\033[32mCompilation successful\033[0m!\n"
 
 $(CLNT): $(CLNTOBJ) $(LIBFT) $(FT_PRINTF)
+	@echo "\n\033[33mCompiling client files and dependencies...\033[0m\n"
 	$(CC) $(CFLAGS) -o $(CLNT) $(CLNTOBJ) -L$(LIBFTDIR) -lft -L$(FT_PRINTFDIR) -lftprintf
+	@echo "\n\033[32mCompilation successful\033[0m!\n"
 
 $(OBJDIR)/%.o: ./src/%.c | $(OBJDIR)
 	@echo "\n\033[33mCompiling all build files and dependencies...\033[0m\n"
