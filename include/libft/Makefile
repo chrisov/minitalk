@@ -25,7 +25,7 @@ all: $(NAME)
 $(NAME): $(OBJDIR) $(OBJS)
 	@echo "\n\033[33mCreating libft static library...\033[0m\n"
 	ar rcs $(NAME) $(OBJS)
-	@echo "\nlibft.a created \033[32msuccessfully!\033[0m\n"
+	@echo "\nlibft.a created \033[32msuccessfully\033[0m!\n"
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c | $(OBJDIR)
 	$(CC) $(CFLAGS) -c $< -o $@
@@ -37,12 +37,12 @@ clean:
 	@echo "\n\033[33mCleaning up libft build files...\033[0m\n"
 	rm -f $(OBJS)
 	rm -rf $(OBJDIR)
-	@echo "\nlibft build files cleaned up \033[32msuccessfully!\033[0m\n"
+	@echo "\nlibft build files cleaned up \033[32msuccessfully\033[0m!\n"
 
 fclean: clean
 	@echo "\n\033[33mCleaning up libft executable...\033[0m\n"
 	rm -f $(NAME)
-	@echo "\nlibft executable cleaned up \033[32msuccessfully!\033[0m\n"
+	@echo "\nlibft executable cleaned up \033[32msuccessfully\033[0m!\n"
 
 re: fclean all
 

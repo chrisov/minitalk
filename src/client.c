@@ -6,7 +6,7 @@
 /*   By: dchrysov <dchrysov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 15:26:11 by dchrysov          #+#    #+#             */
-/*   Updated: 2024/12/16 18:50:41 by dchrysov         ###   ########.fr       */
+/*   Updated: 2024/12/24 12:17:29 by dchrysov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,15 @@ static void	chr_to_bin(char ch, int pid)
 	}
 }
 
+/**
+ * @brief Checks if parameters are valid
+ */
 static void	error_check( int argc, char *argv)
 {
 	if (argc == 1)
 	{
-		ft_printf("\033[1;31m\n(Wrong arguments format) ");
-		ft_printf("\033[0mEnter parameters correctly:\n\n\t\t\t");
+		ft_printf("\033[1;31m\n(Wrong argument format) ");
+		ft_printf("\033[0mEnter parameters as:\n\n\t\t\t");
 		ft_printf("./client.c <PID> \"message\"\n\n\n");
 		exit(0);
 	}
@@ -46,8 +49,8 @@ static void	error_check( int argc, char *argv)
 		{
 			if (!ft_isdigit(*argv++) || argc != 3)
 			{
-				ft_printf("\033[1;31m\n(Wrong arguments format) ");
-				ft_printf("\033[0mEnter parameters correctly:\n\n\t\t\t");
+				ft_printf("\033[1;31m\n(Wrong argument format) ");
+				ft_printf("\033[0mEnter parameters as:\n\n\t\t\t");
 				ft_printf("./client.c <PID> \"message\"\n\n\n");
 				exit(0);
 			}

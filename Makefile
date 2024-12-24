@@ -29,7 +29,7 @@ $(CLNT): $(CLNTOBJ) $(LIBFT) $(FT_PRINTF)
 $(OBJDIR)/%.o: ./src/%.c | $(OBJDIR)
 	@echo "\n\033[33mCompiling all build files and dependencies...\033[0m\n"
 	$(CC) $(CFLAGS) -c $< -o $@
-	@echo "\n\033[32mCompilation successful!\033[0m\n"
+	@echo "\n\033[32mCompilation successful\033[0m!\n"
 
 $(OBJDIR):
 	mkdir -p $(OBJDIR)
@@ -45,7 +45,7 @@ clean:
 	rm -f $(CLNTOBJ) $(SRVROBJ)
 	$(MAKE) -C $(LIBFTDIR) clean
 	$(MAKE) -C $(FT_PRINTFDIR) clean
-	@echo "\nAll build files cleaned up \033[32msuccessfully!\033[0m\n"
+	@echo "\nAll build files cleaned up \033[32msuccessfully\033[0m!\n"
 
 
 fclean: clean
@@ -54,7 +54,7 @@ fclean: clean
 	rm -rf $(OBJDIR)
 	$(MAKE) -C $(LIBFTDIR) fclean
 	$(MAKE) -C $(FT_PRINTFDIR) fclean
-	@echo "\nExecutables and static libraries cleaned up \033[32msuccessfully!\033[0m\n"
+	@echo "\nExecutables and static libraries cleaned up \033[32msuccessfully\033[0m!\n"
 
 re: fclean all
 
